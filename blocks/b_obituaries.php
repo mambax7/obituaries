@@ -15,7 +15,7 @@ function b_obituaries_show($options)
     global $xoopsUser;
     $block = [];
     require_once XOOPS_ROOT_PATH . '/modules/obituaries/include/common.php';
-    $usersHandler = new Obituaries\UsersHandler($db);
+    $usersHandler = new Obituaries\UsersHandler(null);
     $start        = 0;
     $limit        = (int)$options[0];
     $itemsCount   = $usersHandler->getTodayObituariessCount();
@@ -78,7 +78,7 @@ function b_obituaries_random_show($options)
     $start = 0;
     $limit = (int)$options[0];
 
-    $usersHandler = new Obituaries\UsersHandler($db);
+    $usersHandler = new Obituaries\UsersHandler(null);
     $users        = $usersHandler->getRandomObituariess($start, $limit);
     if (count($users) > 0) {
         foreach ($users as $user) {
@@ -135,7 +135,7 @@ function b_obituaries_last_show($options)
         $sort  = 'obituaries_lastname';
         $order = 'ASC';
     }
-    $usersHandler = new Obituaries\UsersHandler($db);
+    $usersHandler = new Obituaries\UsersHandler(null);
     $users        = $usersHandler->getLastObituariess($start, $limit, $sort, $order);
 
     if (count($users) > 0) {
